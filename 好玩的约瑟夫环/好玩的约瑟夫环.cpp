@@ -24,7 +24,7 @@ public:
 	void Add(int n);//在尾部添加一个号码为n的节点，当前序列不能为空
 	Node* DeleteNext(Node *p);//删除p的下一个节点
 	void AddNode(Node* p);//在尾部添加一个现有的节点
-	friend Circle& Suicide(Circle rhs,int N);//start gaming 传入一个序列 和 密码
+	friend Circle& Suicide(Circle &rhs,int N);//start gaming 传入一个序列 和 密码
 	void Display();//显示序列
 };
 Circle& Circle::operator=(const Circle &rhs) {
@@ -32,6 +32,7 @@ Circle& Circle::operator=(const Circle &rhs) {
 	while (p) {
 		Node*q = p;
 		p = p->next;
+		if (p == p->next) { delete(p); break; }
 		delete(q);
 	}
 	curp = head = new Node;
@@ -87,8 +88,7 @@ void Circle::AddNode(Node* p) {
 		p->next=head;
 	}
 	else{
-		curp->next = p;
-	
+		curp->next = p;	
 		p->next = head;
 		curp = p;
 	}
@@ -103,7 +103,7 @@ Node* Circle::DeleteNext(Node *p) {
 	p->next = q->next;
 	return q;
 }
-Circle& Suicide(Circle rhs,int N) {
+Circle& Suicide(Circle &rhs,int N) {
 	Node* p = rhs.curp;//p指向最后一个节点便于删除下一个节点
 	Circle tmp;
 	while (p) {
@@ -113,6 +113,7 @@ Circle& Suicide(Circle rhs,int N) {
 		}
 		tmp.AddNode(rhs.DeleteNext(p));//将出列的节点删除并加入tmp序列
 		j++;
+		if (p == p->next) break;//如果只剩下一个节点就跳出
 	}
 	return tmp;//返回新tmp序列
 }
@@ -121,11 +122,13 @@ int main() {
 	int M, N;
 	while (cin >> M) {
 		Circle c1(1);
-		//Circle c2(1);
+		Circle c2(1);
 		for (int i = 2; i <= M; i++)
 			c1.Add(i);
 		while (cin >> N) {
-			Circle c2(Suicide(c1, N));
+			c2=Suicide(c1, N);
+			c2.Display();
+			//Circle c2(Suicide(c1, N));
 		}
 	}
 }
