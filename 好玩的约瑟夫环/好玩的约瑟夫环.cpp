@@ -1,5 +1,5 @@
 #include<iostream>
-#include<cstring>
+#include <iomanip>
 using namespace std;
 class Node {
 public:
@@ -20,18 +20,18 @@ public:
 		curp->next = head;
 	}
 	Circle(Circle &rhs);//拷贝构造
-	/*~Circle() {
-		if (head != NULL) {
-			Node*p = head;
-			do {
-				Node*q = p;
-				p = p->next;
-				delete(q);
-			} while (p != head);
-			head = NULL;
-			curp = NULL;
-		}
-	}*/
+	//~Circle() {
+	//	if (head != NULL) {
+	//		Node*p = head;
+	//		do {
+	//			Node*q = p;
+	//			p = p->next;
+	//			delete(q);
+	//		} while (p != head);
+	//		head = NULL;
+	//		curp = NULL;
+	//	}
+	//}
 	Circle& operator=(const Circle&rhs);//拷贝赋值
 	void Add(int n);//在尾部添加一个号码为n的节点，当前序列不能为空
 	Node* DeleteNext(Node *p);//删除p的下一个节点
@@ -78,7 +78,7 @@ Circle::Circle(Circle &rhs) {//拷贝构造
 void Circle::Display() {
 	Node *p = head;
 	do {
-		cout << p->id<<" ";
+		cout << setw(4)<< p->id;
 		//if (p->next != head) cout << " ";
 		p = p->next;
 	} while (p&&p != head);
