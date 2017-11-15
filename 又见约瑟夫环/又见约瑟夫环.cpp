@@ -7,46 +7,44 @@ public:
 	Node *next;
 };
 class Circle {
-private :
-//	class Node;
+private:
+	//	class Node;
 	Node* head;//头指针
 	Node* curp;//最后一个节点指针
 public:
 	Circle() :head(NULL), curp(NULL) {};//构造一个空序列
-	Circle(int n){//构造一个初始号码为n的序列
+	Circle(int n) {//构造一个初始号码为n的序列
 		curp = new Node;
 		head = curp;
 		curp->id = n;
 		curp->next = head;
 	}
 	Circle(Circle &rhs);//拷贝构造
-	/*~Circle() {
-		if (head != NULL) {
-			Node*p = head;
-			do {
-				Node*q = p;
-				p = p->next;
-				delete(q);
-			} while (p != head);
-			head = NULL;
-			curp = NULL;
-		}
-	}*/
+						/*~Circle() {
+						Node*p = head;
+						do {
+						Node*q = p;
+						p = p->next;
+						delete(q);
+						} while (p != head);
+						head = NULL;
+						curp = NULL;
+						}*/
 	Circle& operator=(const Circle&rhs);//拷贝赋值
 	void Add(int n);//在尾部添加一个号码为n的节点，当前序列不能为空
 	Node* DeleteNext(Node *p);//删除p的下一个节点
 	void AddNode(Node* p);//在尾部添加一个现有的节点
-	friend Circle Suicide(Circle &rhs,int N);//start gaming 传入一个序列 和 密码
+	friend Circle Suicide(Circle &rhs, int N);//start gaming 传入一个序列 和 密码
 	void Display();//显示序列
 };
 Circle& Circle::operator=(const Circle &rhs) {
 	Node*p = head;
-	 do{//先删除所有节点
+	do {//先删除所有节点
 		Node*q = p;
 		p = p->next;
 		delete(q);
-	 } while (p != head);
-	 
+	} while (p != head);
+
 	curp = head = new Node;
 	head->id = rhs.head->id;
 	p = head;
@@ -62,9 +60,9 @@ Circle& Circle::operator=(const Circle &rhs) {
 	return *this;
 }
 Circle::Circle(Circle &rhs) {//拷贝构造
-	curp= head = new Node;
+	curp = head = new Node;
 	head->id = rhs.head->id;
-	Node* p=head;
+	Node* p = head;
 	Node* q = rhs.head->next;
 	do {
 		p->next = new Node;
@@ -78,7 +76,7 @@ Circle::Circle(Circle &rhs) {//拷贝构造
 void Circle::Display() {
 	Node *p = head;
 	do {
-		cout << p->id<<" ";
+		cout << p->id << " ";
 		//if (p->next != head) cout << " ";
 		p = p->next;
 	} while (p&&p != head);
@@ -90,7 +88,7 @@ void Circle::Add(int n) {
 	curp->next->next = head;//新加的尾部节点指向开头
 	curp = curp->next;
 }
-Node* DeleteNext(Node *p){//删除p的下一个节点
+Node* DeleteNext(Node *p) {//删除p的下一个节点
 	Node* q = p->next;
 	p->next = q->next;
 	q->next = NULL;
@@ -100,11 +98,11 @@ void Circle::AddNode(Node* p) {
 	if (!head) {//如本身不存在节点则新建
 		head = p;
 		curp = p;
-	
-		p->next=head;
+
+		p->next = head;
 	}
-	else{
-		curp->next = p;	
+	else {
+		curp->next = p;
 		p->next = head;
 		curp = p;
 	}
@@ -119,7 +117,7 @@ Node* Circle::DeleteNext(Node *p) {
 	p->next = q->next;
 	return q;
 }
-Circle Suicide(Circle &rhs,int N) {
+Circle Suicide(Circle &rhs, int N) {
 	Node* p = rhs.curp;//p指向最后一个节点便于删除下一个节点
 	Circle tmp;
 	while (p) {
@@ -138,14 +136,16 @@ Circle Suicide(Circle &rhs,int N) {
 }
 
 int main() {
-	int M, N;
-	while (cin >> M) {
-		Circle c1(1);		
+	int M, N,K;
+	cin >> M >> N >> K;
+	
+		Circle c1(1);
 		for (int i = 2; i <= M; i++)
 			c1.Add(i);
-		while (cin >> N) {
-			c1=Suicide(c1, N);
-		}
+		
+			c1 = Suicide(c1, N);
+			c1 = Suicide(c1, K);
+		
 		c1.Display();
-	}
+	
 }

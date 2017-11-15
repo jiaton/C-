@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "有理数类 -- 运算符�
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "好玩的约瑟夫环", "好玩的约瑟夫环\好玩的约瑟夫环.vcxproj", "{53FB35B1-EBCD-4ABF-8076-F56F511D11E3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "又见约瑟夫环", "又见约瑟夫环\又见约瑟夫环.vcxproj", "{5102486E-C7C9-40B3-A039-0C45FE87E18A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{53FB35B1-EBCD-4ABF-8076-F56F511D11E3}.Release|x64.Build.0 = Release|x64
 		{53FB35B1-EBCD-4ABF-8076-F56F511D11E3}.Release|x86.ActiveCfg = Release|Win32
 		{53FB35B1-EBCD-4ABF-8076-F56F511D11E3}.Release|x86.Build.0 = Release|Win32
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Debug|x64.ActiveCfg = Debug|x64
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Debug|x64.Build.0 = Debug|x64
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Debug|x86.ActiveCfg = Debug|Win32
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Debug|x86.Build.0 = Debug|Win32
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Release|x64.ActiveCfg = Release|x64
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Release|x64.Build.0 = Release|x64
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Release|x86.ActiveCfg = Release|Win32
+		{5102486E-C7C9-40B3-A039-0C45FE87E18A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
