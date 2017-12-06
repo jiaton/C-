@@ -146,6 +146,9 @@
     <ClCompile Include="源.cpp" />
     <ClCompile Include="类模板和异常处理.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="input.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

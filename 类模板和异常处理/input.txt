@@ -1,0 +1,2 @@
+int 10  push 100 push 200 push 50 push 300 put 0 5  put 1 20  push 400 fetch 1 fetch 12 fetch -1 fetch 20 fetch 11 quit
+string 10 push hello push some push apple push box put 1 zhang   push hdu fetch 1 fetch 20 fetch 12 quit

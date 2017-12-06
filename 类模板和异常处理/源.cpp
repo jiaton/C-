@@ -11,11 +11,13 @@ private:
 public:
 	CVector() :size(0), capacity(0) { data = NULL; }
 	CVector(int n) :size(n), capacity(n) {
-		data = new T[size];
+		cout << endl;
+		data = new T[capacity];
 	}
 	~CVector() {
 		delete[] data;
 		size = capacity = 0;
+		cout << endl;
 	}
 	void push(const T & n) {
 		if (size == capacity) {
@@ -29,7 +31,7 @@ public:
 	void put(int pos,const T &n) {
 		if (pos<0 || pos>size) return;
 		else {
-			data[size] = n;
+			data[pos] = n;
 		}
 	}
 	T fetch(int pos) {
@@ -39,7 +41,7 @@ public:
 		}
 
 		else {
-			cout << data[pos] << endl;
+			cout <<" "<<  data[pos] << " ";
 			return data[pos];
 		}
 	}
@@ -50,7 +52,7 @@ private:
 	string msg;
 public:
 	CException(string	msg, int i) : msg(msg) {
-		cout << "invalid index" << ":" << i;
+		cout << " " << "invalid index" << ":" << i;
 		msg = "invalid index";
 	}
 	string	GetErrorMsg() {
@@ -66,6 +68,7 @@ void CVector<T>::resize(int newcapacity) {
 	delete[] data;
 	data = b;
 	b = NULL;
+	capacity = newcapacity;
 }
 
 template	<class T>
@@ -94,7 +97,7 @@ void order(int size)
 			}
 		}
 		catch (CException ex) {
-			cout << "invalid index:" << endl;
+			//cout << "invalid index:" << endl;
 		}
 	}
 	cout << endl;
