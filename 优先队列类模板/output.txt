@@ -1,0 +1,32 @@
+int
+12
+E  1   2
+E  1   3
+E  2   6
+E  1   3
+E  2   9
+D  1
+D  2
+E   2  7
+A   1
+A   2
+E   1  12
+A   1
+
+string
+15
+E  1   some
+E  1   one
+E  2   two
+E  2   tom
+E  1   cat
+E  2   hdu
+D  1
+D  2
+E   2  same
+A   1
+D   2
+A   2
+E   1  again
+E   1  yellow
+A   1

@@ -4,7 +4,7 @@ using namespace std;
 template<class T>
 class Queue {
 private:
-	struct Node{
+	struct Node {
 		T data;
 		Node *next;
 	};
@@ -12,14 +12,15 @@ private:
 	int size;
 public:
 	Queue() :size(0) {
-		front = new Node;		
+		front = new Node;
 		front->next = NULL;
+	
 	}
 	//¿½±´¹¹Ôì
 	Queue(const Queue &rhs) :size(rhs.size) {
 		front = new Node;
 		front->data = rhs.front->data;
-		front -> next = NULL;
+		front->next = NULL;
 		Node *p = rhs.front;
 		Node *q = front;
 		while (p->next) {
@@ -40,21 +41,55 @@ public:
 			front = NULL;
 		}
 	}
-	T DeQueue() {
-		T tmp = front->data;
-		Node *p = front->next;
-		delete front;
-		front = q;
-		size--;
-		return tmp;
+	T DeQueue() {		
+			T tmp = front->data;
+			Node *p = front->next;
+			delete front;
+			front = p;
+			size--;
+			if (size == 0) {
+				front = new Node;
+				front->next = NULL;
+			}
+			return tmp;
+		
 	}
 	void EnQueue(T rhs) {
 		Node *q = new Node;
 		q->data = rhs;
-		Node *p = head;
-		while (p->next&&rhs > p->next->data)
+		q->next = NULL;
+		Node *p = front;
+		if (size==0) {
+			front->data = rhs;
+			size++;
+			return;
+		}
+		if (size == 1) {
+			if (rhs > front->data) {
+				front->next = q;
+			}
+			else {
+				q->next = front;
+				front = q;
+			}
+			size++;
+			return;
+		}
+		while ((p )&& (p->next )&&(rhs>p->next->data))
 		{
 			p = p->next;
+		}
+		if (p == front) {
+			if (rhs > front->data) {
+				q->next = front->next;
+				front->next = q;
+			}
+			else {
+				q->next = front;
+				front = q;
+			}
+			size++;
+			return;
 		}
 		q->next = p->next;
 		p->next = q;
@@ -62,12 +97,13 @@ public:
 
 	}
 	bool IsEmpty() {
-		return(head == NULL);
+		if (size == 0) return true;
+		else return false;
 	}
 	/*Queue(Queue &&rhs) {
-		front = rhs.front;
-		rhs.front = NULL;
-		size = rhs.size;
+	front = rhs.front;
+	rhs.front = NULL;
+	size = rhs.size;
 	}*/
 };
 template <class T>
@@ -84,16 +120,14 @@ void Order(T &Order) {
 			Q[i].EnQueue(x);
 		}
 		else if (cmd == "D") {
-			cin >> i; i--;
-			x = v[i].front();
-			v[i].pop();
+			cin >> i;
+			x = Q[i].DeQueue();
 			cout << x << ' ';
 		}
 		else if (cmd == "A") {
-			cin >> i; i--;
-			while (!v[i].empty()) {
-				x = v[i].front();
-				v[i].pop();
+			cin >> i; 
+			while (!Q[i].IsEmpty()) {
+				x = Q[i].DeQueue();
 				cout << x << ' ';
 			}
 		}
@@ -106,9 +140,9 @@ int main()
 	int n;
 	while (cin >> order) {
 		if (order == "int")
-			Order(n);
+			Order<int>(n);
 		if (order == "string")
-			Order(order);
+			Order<string>(order);
 	}
 	return 0;
 }
