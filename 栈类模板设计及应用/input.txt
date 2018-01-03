@@ -1,0 +1,18 @@
+int
+7
+1 100
+2 200
+1 300
+2 400 
+1 50
+1 60
+2 80
+
+string
+6
+1   some
+1   one
+2   two
+2   tom
+1   cat
+2   hdu
